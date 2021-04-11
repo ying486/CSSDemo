@@ -1,28 +1,67 @@
 <template>
   <div class="main">
-    <div class="card">
-      <span>Demo</span>
+    <form class="card" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+      <p class="title">Demo</p>
       <input type="text" placeholder="账户" />
       <input type="password" placeholder="密码" />
       <button @click="login">Login</button>
-    </div>
+    </form>
   </div>
 </template>
+
 <script>
 export default {
   name: "login",
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      isIn: true,
+      isOut: false,
+      span: null,
+    };
   },
   methods: {
     login() {
       alert("success");
     },
+    // 监听鼠标进入card
+    mouseEnter(e) {
+      const con = document.querySelector(".card");
+      if (this.isIn) {
+        let el = document.createElement("span");
+        el.style.left = e.layerX + "px";
+        el.style.top = e.layerY + "px";
+        con.appendChild(el);
+
+        $(".card span").removeClass("out");
+        $(".card span").addClass("in");
+        this.span = document.querySelector(".card span");
+        this.isIn = false;
+        this.isOut = true;
+      }
+    },
+    // 监听鼠标离开card
+    mouseLeave(e) {
+      const con = document.querySelector(".card");
+      if (this.isOut) {
+        $(".card span").removeClass("in");
+        $(".card span").addClass("out");
+        $(".out").css("left", e.layerX + "px");
+        $(".out").css("top", e.layerY + "px");
+        this.span = document.querySelector(".card span");
+        this.isOut = false;
+
+        setTimeout(() => {
+          con.removeChild(this.span);
+          this.isIn = true;
+        }, 500);
+      }
+    },
   },
 };
 </script>
+
 <style lang='scss'>
 .main {
   width: 100%;
@@ -41,35 +80,27 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
-  .card span {
+
+  .card .title {
     font-size: 50px;
     color: #fff;
     font-weight: 100;
     margin: 0 0 10px 0;
+    z-index: 1;
   }
 
   .card input {
-    position: relative;
-    height: 20px;
-    background-color: transparent;
+    background: none;
     border: 0;
     color: #fff;
     margin: 10px 0;
     padding: 6px;
     border-bottom: 1px solid #fff;
     outline: none;
+    z-index: 1;
   }
-
-  /* 
-    .card input::before {
-      content: "--";
-      position: absolute;
-      top: 10px;
-      width: 50px;
-      height: 10px;
-      background-color: #fff;
-    } */
 
   .card ::-webkit-input-placeholder {
     color: #fff;
@@ -82,13 +113,14 @@ export default {
     width: 150px;
     height: 30px;
     color: #fff;
-    background-color: #31485e;
+    background-color: transparent;
     font-weight: 100;
     border: 1px solid #fff;
     border-radius: 50px;
     margin: 16px 0;
     cursor: pointer;
     outline: none;
+    z-index: 1;
   }
 
   .card button:hover {
@@ -98,6 +130,58 @@ export default {
 
   .card button:active {
     box-shadow: 2px 2px 5px 1px #333 inset;
+  }
+
+  // 鼠标进入的样式
+  .card .in {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #3498bd;
+    transform: translate(-50%, -50%);
+    animation: in 1s ease-out forwards;
+  }
+
+  // 鼠标离开的样式
+  .card .out {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background-color: #3498bd;
+    transform: translate(-50%, -50%);
+    animation: out 0.5s ease-out forwards;
+  }
+
+  // 设置鼠标进入时，元素动画
+  @keyframes in {
+    0% {
+      width: 0;
+      height: 0;
+    }
+    100% {
+      width: 1200px;
+      height: 1200px;
+    }
+  }
+
+  // 设置鼠标离开时，元素动画
+  @keyframes out {
+    0% {
+      width: 1200px;
+      height: 1200px;
+    }
+    100% {
+      width: 0;
+      height: 0;
+    }
   }
 }
 </style>
