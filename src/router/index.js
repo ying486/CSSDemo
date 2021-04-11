@@ -13,6 +13,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login.vue"),
   },
+  {
+    path: "/loading",
+    name: "loading",
+    component: () =>
+      import(/* webpackChunkName: "loading" */ "../views/loading.vue"),
+  },
 ];
 
 const router = createRouter({

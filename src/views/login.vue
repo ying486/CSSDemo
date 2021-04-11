@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="login">
     <form class="card" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
       <p class="title">Demo</p>
       <input type="text" placeholder="账户" />
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang='scss'>
-.main {
+.login {
   width: 100%;
   height: 100%;
   background-color: #2a3d51;

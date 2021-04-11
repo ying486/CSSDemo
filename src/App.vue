@@ -1,8 +1,11 @@
 <template>
   <router-view />
-  <button v-if="$route.name !== 'Home'" class="to-home" @click="onBack">
-    back
-  </button>
+  <img
+    v-if="$route.name !== 'Home'"
+    class="to-home"
+    src="@/assets/images/back.png"
+    @click="onBack"
+  />
 </template>
 <script>
 export default {
@@ -23,6 +26,8 @@ body {
 }
 
 .to-home {
+  width: 30px;
+  height: 30px;
   position: fixed;
   bottom: 10px;
   right: 10px;

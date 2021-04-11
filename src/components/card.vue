@@ -26,15 +26,14 @@ export default {
 <style lang="scss">
 .card-container {
   width: 200px;
-  height: 250px;
+  height: 150px;
   background-color: #fff;
-  padding: 5px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgb(196, 196, 196);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow: hidden;
   img {
     height: 100px;
   }

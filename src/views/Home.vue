@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <Card
+      class="card"
       v-for="(item, index) in demoList"
       :key="index"
       :title="item.title"
       :img="item.img"
-      @click="$router.push('login')"
+      @click="$router.push(item.routeName)"
     />
   </div>
 </template>
@@ -23,8 +24,13 @@ export default {
       demoList: [
         {
           title: "login",
-          img: "logo.png",
+          img: "login.png",
           routeName: "login",
+        },
+        {
+          title: "loading",
+          img: "loading.png",
+          routeName: "loading",
         },
       ],
     };
@@ -36,7 +42,13 @@ export default {
 <style lang="scss">
 .home {
   height: 100vh;
-  padding: 10px;
+  padding: 20px;
   background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .card {
+    margin: 20px 20px;
+  }
 }
 </style>
