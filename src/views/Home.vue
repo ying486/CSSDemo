@@ -32,6 +32,21 @@ export default {
           img: "loading.png",
           routeName: "loading",
         },
+        {
+          title: "video-cube",
+          img: "loading.png",
+          routeName: "video-cube",
+        },
+        {
+          title: "button-A",
+          img: "button-A.png",
+          routeName: "button-A",
+        },
+        {
+          title: "button-B",
+          img: "button-B.png",
+          routeName: "button-B",
+        },
       ],
     };
   },

@@ -19,6 +19,24 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "loading" */ "../views/loading.vue"),
   },
+  {
+    path: "/video-cube",
+    name: "video-cube",
+    component: () =>
+      import(/* webpackChunkName: "video-cube" */ "../views/video-cube.vue"),
+  },
+  {
+    path: "/button-A",
+    name: "button-A",
+    component: () =>
+      import(/* webpackChunkName: "button-A" */ "../views/button-A.vue"),
+  },
+  {
+    path: "/button-B",
+    name: "button-B",
+    component: () =>
+      import(/* webpackChunkName: "button-B" */ "../views/button-B.vue"),
+  },
 ];
 
 const router = createRouter({
