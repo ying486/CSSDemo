@@ -19,6 +19,7 @@
         <video src="@/assets/videos/daily.mp4" autoplay muted loop></video>
       </div>
     </div>
+    <img v-if="showHint" class="hint" :src="imgSrc" />
   </div>
 </template>
 
@@ -30,27 +31,62 @@ export default {
   data() {
     return {
       myVideo: null,
+      showHint: false,
+      imgSrc: "",
+      time: 0,
     };
+  },
+  computed: {
+    stop() {
+      return require("@/assets/images/stop.png");
+    },
+    play() {
+      return require("@/assets/images/play.png");
+    },
+    silent() {
+      return require("@/assets/images/silent.png");
+    },
+    voiced() {
+      return require("@/assets/images/voiced.png");
+    },
   },
   methods: {
     // 播放与暂停
     playPause() {
-      if (this.myVideo[0].paused)
-        this.myVideo.forEach((item) => {
-          item.play();
-        });
-      else
-        this.myVideo.forEach((item) => {
-          item.pause();
-        });
+      clearTimeout(this.time);
+      if (!this.showHint) {
+        if (this.myVideo[0].paused)
+          this.myVideo.forEach((item) => {
+            item.play();
+            this.imgSrc = this.play;
+          });
+        else
+          this.myVideo.forEach((item) => {
+            item.pause();
+            this.imgSrc = this.stop;
+          });
+        this.showHint = true;
+      }
+      this.time = setTimeout(() => {
+        this.showHint = false;
+      }, 1000);
     },
     // 静音
     voice() {
-      this.myVideo[0].muted = !this.myVideo[0].muted;
+      clearTimeout(this.time);
+      if (!this.showHint) {
+        this.myVideo[0].muted = !this.myVideo[0].muted;
+        this.imgSrc = this.myVideo[0].muted ? this.silent : this.voiced;
+        this.showHint = true;
+      }
+      this.time = setTimeout(() => {
+        this.showHint = false;
+      }, 1000);
     },
   },
   mounted() {
     this.myVideo = document.getElementsByTagName("video");
+    this.imgSrc = this.play;
   },
 };
 </script>
@@ -59,6 +95,8 @@ export default {
 .video-cube {
   width: 100%;
   height: 100%;
+  --cube-size: 400px;
+  --panel-size: 400px;
   .background {
     position: absolute;
     top: 0;
@@ -70,19 +108,19 @@ export default {
   }
 
   .cube {
-    width: 200px;
-    height: 200px;
+    width: var(--cube-size);
+    height: var(--cube-size);
     position: absolute;
     top: 50%;
     left: 50%;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    -webkit-transform: rotateX(23deg) rotateY(-48deg) translate3d(-50%, -50%, 0);
+    transform: rotateX(23deg) rotateY(-48deg) translate3d(-75%, -75%, 0);
 
     .panel {
       position: absolute;
-      width: 200px;
-      height: 200px;
+      width: var(--panel-size);
+      height: var(--panel-size);
       background: #fff;
 
       video {
@@ -95,19 +133,36 @@ export default {
       }
     }
     .panel:nth-child(1) {
-      -webkit-transform: rotateX(90deg) translate3d(0, 0, 100px);
+      transform: rotateX(90deg) translate3d(0, 0, 200px);
     }
 
     .panel:nth-child(1) video {
-      -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
     }
 
     .panel:nth-child(2) {
-      -webkit-transform: rotateX(0deg) translate3d(0, 0, -100px);
+      transform: rotateX(0deg) translate3d(0, 0, -200px);
     }
 
     .panel:nth-child(3) {
-      -webkit-transform: rotateY(270deg) translate3d(0, 0, 100px);
+      transform: rotateY(270deg) translate3d(0, 0, 200px);
+    }
+  }
+  .hint {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    opacity: 1;
+    animation: opac 1s ease forwards;
+  }
+
+  @keyframes opac {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 }

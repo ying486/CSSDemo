@@ -8,16 +8,22 @@ const routes = [
     component: Home,
   },
   {
-    path: "/login",
-    name: "login",
+    path: "/login_A",
+    name: "login_A",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/login.vue"),
+      import(/* webpackChunkName: "login_A" */ "../views/login_A.vue"),
   },
   {
-    path: "/loading",
-    name: "loading",
+    path: "/loading_A",
+    name: "loading_A",
     component: () =>
-      import(/* webpackChunkName: "loading" */ "../views/loading.vue"),
+      import(/* webpackChunkName: "loading_A" */ "../views/loading_A.vue"),
+  },
+  {
+    path: "/loading_B",
+    name: "loading_B",
+    component: () =>
+      import(/* webpackChunkName: "loading_B" */ "../views/loading_B.vue"),
   },
   {
     path: "/video-cube",
@@ -36,6 +42,18 @@ const routes = [
     name: "button-B",
     component: () =>
       import(/* webpackChunkName: "button-B" */ "../views/button-B.vue"),
+  },
+  {
+    path: "/button-C",
+    name: "button-C",
+    component: () =>
+      import(/* webpackChunkName: "button-C" */ "../views/button-C.vue"),
+  },
+  {
+    path: "/gradient_A",
+    name: "gradient_A",
+    component: () =>
+      import(/* webpackChunkName: "gradient_A" */ "../views/gradient_A.vue"),
   },
 ];
 

@@ -23,18 +23,18 @@ export default {
     return {
       demoList: [
         {
-          title: "login",
-          img: "login.png",
-          routeName: "login",
+          title: "login_A",
+          img: "login_A.png",
+          routeName: "login_A",
         },
         {
-          title: "loading",
-          img: "loading.png",
-          routeName: "loading",
+          title: "loading_A",
+          img: "loading_A.png",
+          routeName: "loading_A",
         },
         {
           title: "video-cube",
-          img: "loading.png",
+          img: "video-cube.png",
           routeName: "video-cube",
         },
         {
@@ -46,6 +46,21 @@ export default {
           title: "button-B",
           img: "button-B.png",
           routeName: "button-B",
+        },
+        {
+          title: "button-C",
+          img: "button-C.png",
+          routeName: "button-C",
+        },
+        {
+          title: "loading_B",
+          img: "loading_B.png",
+          routeName: "loading_B",
+        },
+        {
+          title: "gradient_A",
+          img: "gradient_A.png",
+          routeName: "gradient_A",
         },
       ],
     };
@@ -63,7 +78,7 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   .card {
-    margin: 20px 20px;
+    margin: 0 20px;
   }
 }
 </style>

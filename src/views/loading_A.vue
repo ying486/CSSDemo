@@ -1,5 +1,5 @@
 <template>
-  <div class="loading">
+  <div class="loading_A">
     <ul>
       <li></li>
       <li></li>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "loading",
+  name: "loading_A",
   components: {},
   props: {},
   data() {
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang='scss'>
-.loading {
+.loading_A {
   width: 100%;
   height: 100%;
   display: flex;

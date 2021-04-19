@@ -1,12 +1,12 @@
 <template>
-  <div class="loading">
+  <div class="button_A">
     <div class="btn" @click="onClick">button</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "loading",
+  name: "button_A",
   components: {},
   props: {},
   data() {
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang='scss'>
-.loading {
+.button_A {
   width: 100%;
   height: 100%;
   background-color: #333;
