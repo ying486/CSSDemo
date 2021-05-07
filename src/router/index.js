@@ -55,6 +55,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "gradient_A" */ "../views/gradient_A.vue"),
   },
+  {
+    path: "/tick",
+    name: "tick",
+    component: () => import(/* webpackChunkName: "tick" */ "../views/tick.vue"),
+  },
 ];
 
 const router = createRouter({

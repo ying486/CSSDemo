@@ -23,6 +23,7 @@ body {
 
 #app {
   height: 100vh;
+  background-color: #f7f7f7;
 }
 
 .to-home {
@@ -31,5 +32,6 @@ body {
   position: fixed;
   bottom: 10px;
   right: 10px;
+  cursor: pointer;
 }
 </style>

@@ -62,6 +62,11 @@ export default {
           img: "gradient_A.png",
           routeName: "gradient_A",
         },
+        {
+          title: "tick",
+          img: "tick.png",
+          routeName: "tick",
+        },
       ],
     };
   },
@@ -71,14 +76,15 @@ export default {
 
 <style lang="scss">
 .home {
-  height: 100vh;
+  // height: 100vh;
   padding: 20px;
   background-color: #f7f7f7;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   .card {
-    margin: 0 20px;
+    margin: 20px;
+    cursor: pointer;
   }
 }
 </style>
